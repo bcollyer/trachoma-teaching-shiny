@@ -10,6 +10,7 @@
 
 library(shiny)
 library(ggplot2)
+library(markdown)  # required by includeMarkdown() - explicit so rsconnect bundles it
 
 ## The 'ragg' graphics device DLL on this machine is incompatible with the
 ## installed R version (built-under-4.3.3 packages vs. R 4.0.5 runtime) -

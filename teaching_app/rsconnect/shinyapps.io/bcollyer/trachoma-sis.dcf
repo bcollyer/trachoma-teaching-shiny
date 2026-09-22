@@ -1,0 +1,10 @@
+name: trachoma-sis
+title:
+username: bcollyer
+account: bcollyer
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 17977696
+bundleId: 12590066
+url: https://bcollyer.shinyapps.io/trachoma-sis/
+version: 1
