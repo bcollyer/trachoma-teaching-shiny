@@ -242,7 +242,4 @@ number.
 
 This is still a **simplified teaching model**: no age structure, a single
 averaged life expectancy standing in for real demography, and typically far
-fewer rungs than the full model. See `trachoma_first_principles.R` and
-`trachoma_first_principles_300_history.R` in this repository (which uses
-up to 100+ rungs, each further split by 18 age groups) for the fuller
-models used for actual fitting and projection work.
+fewer rungs than the full model. 

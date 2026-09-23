@@ -6,19 +6,14 @@ prototypes into the **full model**:
 - the **infection-history ladder** (partial immunity via rung-dependent
   recovery and infectiousness) from `teaching_app_ladder`, and
 - **age structure** (18 age groups, age-assortative mixing, ageing,
-  age-specific mortality, births) from the real, working model in
-  `trachoma_first_principles_300_history.R` in this repository.
+  age-specific mortality, births) from the full model.
 
-Rather than reimplementing the age-structured mechanics, this app calls
-`make_parms_300()` / `run_model_300()` from that file directly (see
-`R/model_lib.R`) - the equations here are exactly the ones used for actual
-fitting and projection work, just wrapped with sliders for teaching.
 
 ### Two nested structures
 
 **Within each age group**, the ladder works exactly as in
-`teaching_app_ladder`: people move `S_1 -> I_1 -> S_2 <-> I_2 -> ... -> S_n
-<-> I_n`, with recovery rate $\nu_j$ increasing and infectiousness $l_j$
+`teaching_app_ladder`: people move `S_1 -> I_1 -> S_2 -> I_2 -> ... -> S_n
+-> I_n`, with recovery rate $\nu_j$ increasing and infectiousness $l_j$
 decreasing at higher rungs, and irreversible scarring (**TS**) then
 trichiasis (**TT**) accumulating from repeat infection:
 
