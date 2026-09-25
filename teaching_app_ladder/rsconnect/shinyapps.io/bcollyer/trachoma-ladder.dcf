@@ -5,6 +5,6 @@ account: bcollyer
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 17977820
-bundleId: 12590077
+bundleId: 12593966
 url: https://bcollyer.shinyapps.io/trachoma-ladder/
 version: 1
