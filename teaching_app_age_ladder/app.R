@@ -61,6 +61,7 @@ ui <- fluidPage(
                       min = 0, max = 1, value = 0, step = 0.05),
           numericInput("mda_start", "Year of first round", value = 40, min = 0),
           numericInput("mda_interval", "Years between rounds", value = 1, min = 0.1),
+          numericInput("mda_rounds", "Number of rounds", value = 10, min = 0, step = 1),
           sliderInput("drug_efficacy", "Drug efficacy", min = 0, max = 1, value = 1, step = 0.05),
           hr(),
           uiOutput("r0_display")
@@ -89,7 +90,8 @@ server <- function(input, output, session) {
       k_TS = input$k_TS, k_TT = input$k_TT, m_hist = input$m_hist,
       years = input$years, dt_out = input$dt_out,
       mda_coverage = input$mda_coverage, mda_start = input$mda_start,
-      mda_interval = input$mda_interval, drug_efficacy = input$drug_efficacy
+      mda_interval = input$mda_interval, mda_rounds = input$mda_rounds,
+      drug_efficacy = input$drug_efficacy
     )
   })
 

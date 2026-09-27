@@ -34,7 +34,9 @@ age_band_labels <- c(
 #' @param years simulation horizon (years)
 #' @param dt_out output time step (years)
 #' @param eq_window_years number of final years averaged to define "equilibrium"
-#' @param mda_coverage,mda_start,mda_interval,drug_efficacy MDA schedule (coverage 0 disables MDA)
+#' @param mda_coverage,mda_start,mda_interval,mda_rounds,drug_efficacy MDA
+#'   schedule (coverage 0 disables MDA; mda_rounds caps the number of
+#'   rounds delivered, starting at mda_start, regardless of years)
 #' @return list(age_df, ts_df, R0, mda_times)
 run_age_ladder_model <- function(transRate = 3,
                                   epsilon = 0.5,
@@ -52,6 +54,7 @@ run_age_ladder_model <- function(transRate = 3,
                                   mda_coverage = 0,
                                   mda_start = 40,
                                   mda_interval = 1,
+                                  mda_rounds = 10,
                                   drug_efficacy = 1.0) {
   parms <- make_parms_300(
     transRate = transRate, epsilon = epsilon, nu0 = nu0, nu1 = nu1,
@@ -62,8 +65,8 @@ run_age_ladder_model <- function(transRate = 3,
 
   mda_schedule <- NULL
   mda_times <- numeric(0)
-  if (mda_coverage > 0 && is.finite(mda_interval) && mda_interval > 0) {
-    mda_times <- seq(mda_start, years, by = mda_interval)
+  if (mda_coverage > 0 && is.finite(mda_interval) && mda_interval > 0 && mda_rounds > 0) {
+    mda_times <- mda_start + (seq_len(mda_rounds) - 1) * mda_interval
     mda_times <- mda_times[mda_times <= years]
     if (length(mda_times) > 0) {
       mda_schedule <- data.frame(time = mda_times, coverage = mda_coverage)
